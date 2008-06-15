@@ -2,8 +2,7 @@ class <%= model_controller_class_name %>Controller < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   <% if options[:stateful] %>
-  # Protect these actions behind an admin login
-  # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
+  before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_<%= file_name %>, :only => [:suspend, :unsuspend, :destroy, :purge]
   <% end %>
 
@@ -79,6 +78,10 @@ class <%= model_controller_class_name %>Controller < ApplicationController
   # supply their old password along with a new one to update it, etc.
 
 protected
+  def admin_required
+    false
+  end
+  
   def find_<%= file_name %>
     @<%= file_name %> = <%= class_name %>.find(params[:id])
   end
