@@ -247,10 +247,11 @@ class AuthenticatedGenerator < Rails::Generator::NamedBase
         # Note that this fails for nested classes -- you're on your own with setting up the routes.
         m.route_resource  controller_singular_name
         m.route_resources model_controller_plural_name
-        m.route_name('signup',   '/signup',   {:controller => model_controller_plural_name, :action => 'new'})
-        m.route_name('register', '/register', {:controller => model_controller_plural_name, :action => 'create'})
-        m.route_name('login',    '/login',    {:controller => controller_controller_name, :action => 'new'})
-        m.route_name('logout',   '/logout',   {:controller => controller_controller_name, :action => 'destroy'})
+        m.route_name('signup',     '/signup',                    {:controller => model_controller_plural_name, :action => 'new'})
+        m.route_name('register',   '/register',                  {:controller => model_controller_plural_name, :action => 'create'})
+        m.route_name('login',      '/login',                     {:controller => controller_controller_name, :action => 'new'})
+        m.route_name('logout',     '/logout',                    {:controller => controller_controller_name, :action => 'destroy'})
+        m.route_name('activation', '/activate/:activation_code', {:controller => controller_controller_name, :action => 'activate'})
       end
     end
 
