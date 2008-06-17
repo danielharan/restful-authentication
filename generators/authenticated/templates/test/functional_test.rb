@@ -5,7 +5,7 @@ require '<%= controller_file_name %>_controller'
 class <%= controller_class_name %>Controller; def rescue_action(e) raise e end; end
 
 class <%= controller_class_name %>ControllerTest < Test::Unit::TestCase
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
+  # TODO: Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead
   # Then, you can remove it from this and the units test.
   include AuthenticatedTestHelper
 
